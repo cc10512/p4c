@@ -6,3 +6,12 @@
 img.footer {
     background-color: black;
 }
+
+li.footer::before {
+    content: "Generated on current_date for";
+    vertical-align: top;
+}
+
+address.footer::before {
+    content: "<small>Generated on current_date for &#160;</small>" ;
+}

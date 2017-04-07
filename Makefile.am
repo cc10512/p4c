@@ -190,6 +190,10 @@ gtest:
 DOXYGEN_FILES = $(top_srcdir)/docs/doxygen/doxygen.cfg \
 	        $(top_srcdir)/docs/doxygen/bfn_header.tex \
 	        $(top_srcdir)/docs/doxygen/p4c_layout.xml \
+	        $(top_srcdir)/docs/doxygen/p4c_footer.html \
+	        $(top_srcdir)/docs/doxygen/p4c_css \
+	        $(top_srcdir)/docs/doxygen/set_current_date.sh \
+	        $(top_srcdir)/docs/doxygen/install_docs.sh \
 	        $(top_srcdir)/docs/doxygen/*.md
 
 # ensure the distribution of the doxygen configuration files
@@ -207,6 +211,7 @@ mostlyclean-local:
 # and force rebuilding documentation when sources change
 docs: $(BUILT_SOURCES) $(DOXY_SOURCES)
 	@$(MAKE) doxygen-doc
+	$(srcdir)/docs/doxygen/set_current_date.sh $(top_srcdir)/docs/doxygen/p4c.css > doxygen-out/html/p4c.css
 else
 docs:
 	@echo "Please enable docs building (configure with --enable-doxygen-doc)"
