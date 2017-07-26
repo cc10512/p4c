@@ -360,11 +360,11 @@ class V1Model : public ::Model::Model {
       return cstring::empty;
   }
 
-  // // add all the reserved words to the set
-  // void addReservedWords(std::unordered_set<cstring> &aSet) {
-  //   for (auto it = _reservedWords.begin(); it != _reservedWords.end(); it++)
-  //     aSet.emplace(it->first);
-  // }
+  // add all the reserved words to the set
+  void addReservedWords(std::unordered_set<cstring> &aSet) {
+    for (auto it = _reservedWords.begin(); it != _reservedWords.end(); it++)
+      aSet.emplace(it->first);
+  }
 };
 
 }  // namespace P4V1

@@ -1912,6 +1912,7 @@ void ProgramStructure::createControls() {
 
     for (auto c : controlsToDo) {
         auto ct = controls.get(c);
+        BUG_CHECK(ct != nullptr, "invalid control: %1%", c);
         auto ctrl = convertControl(ct, controls.get(ct));
         if (ctrl == nullptr)
             return;
