@@ -161,7 +161,7 @@ class ErrorReporter final {
         std::string message = ::error_helper(fmt, prefix, "", "", args...);
         emit_message(message);
         if (errorCount >= maxErrorCount)
-            FATAL_ERROR("Number of errors exceeded set maximum of %1%", maxErrorCount);
+            throw Util::TooManyCompilationErrors(maxErrorCount);
     }
 
 

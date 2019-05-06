@@ -87,6 +87,16 @@ class CompilationError : public P4CExceptionBase {
             : P4CExceptionBase(format, args...) {}
 };
 
+/// This class indicates that we reached the maximum numbers of errors
+class TooManyCompilationErrors : public P4CExceptionBase {
+ public:
+    explicit TooManyCompilationErrors(int maxErrorCount)
+            : P4CExceptionBase("") {
+        if (maxErrorCount > 1)
+            message = "Number of errors exceeded set maximum of " + std::to_string(maxErrorCount);
+    }
+};
+
 #define BUG(...) do { throw Util::CompilerBug(__LINE__, __FILE__, __VA_ARGS__); } while (0)
 #define BUG_CHECK(e, ...) do { if (!(e)) BUG(__VA_ARGS__); } while (0)
 #define P4C_UNIMPLEMENTED(...) do { \
